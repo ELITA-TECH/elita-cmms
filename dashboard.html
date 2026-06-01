@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -13,7 +14,14 @@
   <div class="max-w-7xl mx-auto">
 
     <div class="flex justify-between items-center mb-8">
-      <h1 class="text-4xl font-bold">ELITA CMMS</h1>
+
+      <div>
+        <h1 class="text-4xl font-bold">
+          ELITA CMMS
+        </h1>
+
+        <p id="userEmail" class="text-slate-400 mt-2"></p>
+      </div>
 
       <button
         onclick="logout()"
@@ -21,28 +29,45 @@
       >
         Wyloguj
       </button>
+
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
       <a href="ticket.html?type=ogolne"
          class="bg-slate-800 p-8 rounded-2xl hover:bg-slate-700">
-         <h2 class="text-2xl font-bold">Ogólne</h2>
+
+        <h2 class="text-2xl font-bold">
+          Ogólne
+        </h2>
+
       </a>
 
       <a href="ticket.html?type=maszyny"
          class="bg-slate-800 p-8 rounded-2xl hover:bg-slate-700">
-         <h2 class="text-2xl font-bold">Maszyny i urządzenia</h2>
+
+        <h2 class="text-2xl font-bold">
+          Maszyny i urządzenia
+        </h2>
+
       </a>
 
       <a href="ticket.html?type=elektryka"
          class="bg-slate-800 p-8 rounded-2xl hover:bg-slate-700">
-         <h2 class="text-2xl font-bold">Elektryka</h2>
+
+        <h2 class="text-2xl font-bold">
+          Elektryka
+        </h2>
+
       </a>
 
       <a href="ticket.html?type=bezpieczenstwo"
          class="bg-slate-800 p-8 rounded-2xl hover:bg-slate-700">
-         <h2 class="text-2xl font-bold">Systemy bezpieczeństwa</h2>
+
+        <h2 class="text-2xl font-bold">
+          Systemy bezpieczeństwa
+        </h2>
+
       </a>
 
     </div>
@@ -50,6 +75,9 @@
   </div>
 
   <script>
+    document.getElementById("userEmail").innerText =
+      localStorage.getItem("user_email");
+
     function logout() {
       localStorage.clear();
       window.location.href = "index.html";

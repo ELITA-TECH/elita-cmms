@@ -1,3 +1,10 @@
 
-export const SUPABASE_URL = "https://xvbmhibtolynpmlajuin.supabase.co/rest/v1/";
-export const SUPABASE_KEY = "sb_publishable_xRAGkvzfhFz76nx7L9WbRQ_IzIBL1z2";
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+const supabaseUrl = 'WSTAW_SUPABASE_URL'
+const supabaseKey = 'WSTAW_SUPABASE_ANON_KEY'
+
+export const supabase = createClient(
+  supabaseUrl,
+  supabaseKey
+)

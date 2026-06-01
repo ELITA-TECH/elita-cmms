@@ -1,7 +1,7 @@
 
 create extension if not exists "pgcrypto";
 
-create table users (
+create table if not exists users (
   id uuid primary key default gen_random_uuid(),
   email text unique,
   phone text,
@@ -9,7 +9,7 @@ create table users (
   created_at timestamp default now()
 );
 
-create table tickets (
+create table if not exists tickets (
   id uuid primary key default gen_random_uuid(),
   user_email text,
   category text,
@@ -24,9 +24,17 @@ create table tickets (
   created_at timestamp default now()
 );
 
-create table ticket_photos (
-  id uuid primary key default gen_random_uuid(),
-  ticket_id uuid references tickets(id),
-  image_url text,
-  created_at timestamp default now()
-);
+alter table users enable row level security;
+alter table tickets enable row level security;
+
+create policy "Enable all for anon users"
+on users
+for all
+using (true)
+with check (true);
+
+create policy "Enable all tickets for anon users"
+on tickets
+for all
+using (true)
+with check (true);
